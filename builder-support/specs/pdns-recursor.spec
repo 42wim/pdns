@@ -16,6 +16,8 @@ BuildRequires: systemd-devel
 BuildRequires: openssl-devel
 BuildRequires: net-snmp-devel
 BuildRequires: libsodium-devel
+BuildRequires: protobuf-compiler
+BuildRequires: protobuf-devel
 BuildRequires: fstrm-devel
 
 %ifarch aarch64
@@ -50,6 +52,7 @@ package if you need a dns cache for your network.
     --disable-silent-rules \
     --disable-static \
     --enable-unit-tests \
+    --with-protobuf \
     --enable-dnstap \
     --with-libcap \
     --with-lua=%{lua_implementation} \
