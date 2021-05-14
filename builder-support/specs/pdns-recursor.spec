@@ -13,11 +13,10 @@ BuildRequires: boost-devel
 BuildRequires: libcap-devel
 BuildRequires: systemd
 BuildRequires: systemd-devel
-BuildRequires: protobuf-compiler
-BuildRequires: protobuf-devel
 BuildRequires: openssl-devel
 BuildRequires: net-snmp-devel
 BuildRequires: libsodium-devel
+BuildRequires: fstrm-devel
 
 %ifarch aarch64
 BuildRequires: lua-devel
@@ -30,8 +29,6 @@ BuildRequires: luajit-devel
 %ifarch ppc64 ppc64le
 BuildRequires: libatomic
 %endif
-
-BuildRequires: fstrm-devel
 
 Requires(pre): shadow-utils
 %systemd_requires
@@ -53,7 +50,6 @@ package if you need a dns cache for your network.
     --disable-silent-rules \
     --disable-static \
     --enable-unit-tests \
-    --with-protobuf \
     --enable-dnstap \
     --with-libcap \
     --with-lua=%{lua_implementation} \
