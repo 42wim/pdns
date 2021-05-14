@@ -1,7 +1,10 @@
 ---
-name: 'Test package building for specific distributions'
+name: 'Build patched pdns rpms'
 
 on:
+  push:
+    tags:
+      - "**-relaxaa"
   workflow_dispatch:
 
 jobs:
