@@ -14,6 +14,7 @@ jobs:
         product: ['recursor']
         os:
           - centos-7
+          - centos-8
     steps:
       - uses: actions/checkout@v2.3.4
         with:
@@ -21,3 +22,9 @@ jobs:
           submodules: recursive
       # this builds packages and runs our unit test (make check)
       - run: builder/build.sh -v -m ${{ matrix.product }} ${{ matrix.os }}
+      - name: Releasing assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: /home/runner/work/pdns/pdns/builder/tmp/**/x86_64/pdns-recursor*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
